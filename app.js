@@ -43,10 +43,6 @@ app.post("/", (req, res) => {
     }
 
     const request = https.request(url, options, (response) => {
-        response.on("data", (data) => {
-            console.log(JSON.parse(data))
-        })
-
         if (response.statusCode === 200) {
             res.sendFile(`${__dirname}/success.html`)
         }
@@ -60,5 +56,4 @@ app.post("/", (req, res) => {
 
 app.listen(3000, () => {
     console.log(`server is listening to port 3000`)
-    console.log(process.env.apiKey)
 })
